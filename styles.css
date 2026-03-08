@@ -1,0 +1,20 @@
+
+
+
+
+.row {
+    background-color: transparent;
+    padding: 2px;
+    width: min-content;
+    display: flex;
+    gap: 5px;
+    
+}
+
+.column {
+    background-color: transparent;
+    border: 2px solid #555;
+    width: 60px;
+    height: 60px;
+    border-radius: 5px;
+}
