@@ -1,35 +1,43 @@
 const gridContainer = document.querySelector(".grid-container");
-const column = document.createElement("div");
-//   const row = document.createElement("div");
+const editButton = document.querySelector(".edit-btn");
+let rowInput = 3;
+let columnInput = 3;
+let editButtonClicked = false;
 
-const rowNumber = 2;
-const columnNumber = 4;
+editButton.addEventListener("click", () => {
+    editButtonClicked = true;
+    rowInput = Number(prompt("Enter row grid"));
+    columnInput = Number(prompt("Enter column grid"));
+    console.log(typeof(rowInput))
 
-function createRows(callback) {
-    for (let i = 0; i < rowNumber; i++) {
-        const row = document.createElement("div"); // create a row
+    createRow(createColumn);
+})
+
+function createRow(callback) {
+    for (let i = 0; i < rowInput; i++) {
+        const row = document.createElement("div");
         row.classList.add("row");
         gridContainer.appendChild(row);
         callback(row);
     }
 }
 
-function createColumns(row) {
-    for (let j = 0; j < columnNumber; j++) {
-        const square = document.createElement("div"); // create a square
-        square.classList.add("square");
-        row.appendChild(square);
 
-        square.addEventListener("mouseenter", (e) => {
-            console.log(e);
-            e.target.style.backgroundColor = "blue"
+
+function createColumn(row) {
+    for (let i = 0; i < columnInput; i++) {
+        const column = document.createElement("div");
+        column.classList.add("column");
+        row.appendChild(column);
+        
+        column.addEventListener("mouseenter", () => {
+            column.style.backgroundColor = "royalblue"
         })
     }
 }
 
-function createGrid() {
-    createRows(createColumns);
 
-}
+// if (editButtonClicked !== true) {
+    createRow(createColumn);
+// }
 
-createGrid();
