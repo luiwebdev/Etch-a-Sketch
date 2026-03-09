@@ -3,13 +3,15 @@ const gridContainer = document.querySelector(".grid-container");
 const editButton = document.querySelector(".edit-button");
 let rowInput = 16;
 let columnInput = 16;
-let editButtonClicked = false;
 let opacity = 0;
 
 editButton.addEventListener("click", () => {
     clearGrid();
-    rowInput = Number(prompt("Enter row grid"));
-    columnInput = Number(prompt("Enter column grid"));
+
+    do {
+        rowInput = Number(prompt("Enter row grid"));
+        columnInput = Number(prompt("Enter column grid"));
+    } while ((rowInput > 20 || rowInput < 0) || (columnInput > 20 || columnInput < 0));
 
     createRow(createColumn);
 })
