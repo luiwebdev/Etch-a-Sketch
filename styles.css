@@ -1,20 +1,35 @@
 
-
-
+.grid-container {
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    background-color: transparent;
+    width: 400px;
+    height: 400px;
+}
 
 .row {
     background-color: transparent;
     padding: 2px;
-    width: min-content;
     display: flex;
-    gap: 5px;
-    
+    flex: 1;
+    gap: 2px;
 }
 
 .column {
     background-color: transparent;
     border: 2px solid #555;
-    width: 60px;
-    height: 60px;
-    border-radius: 5px;
+    flex: 1;
+}
+
+.edit-button {
+    background-color: black;
+    border: 1px solid #555;
+    border-radius: 2px;
+    color: white;
+    padding: 10px;
+}
+
+.edit-button:hover {
+    background-color: #555;
 }
