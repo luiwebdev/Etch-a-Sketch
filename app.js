@@ -1,14 +1,15 @@
 const gridContainer = document.querySelector(".grid-container");
-const editButton = document.querySelector(".edit-btn");
-let rowInput = 3;
-let columnInput = 3;
+
+const editButton = document.querySelector(".edit-button");
+let rowInput = 16;
+let columnInput = 16;
 let editButtonClicked = false;
+let opacity = 0;
 
 editButton.addEventListener("click", () => {
-    editButtonClicked = true;
+    clearGrid();
     rowInput = Number(prompt("Enter row grid"));
     columnInput = Number(prompt("Enter column grid"));
-    console.log(typeof(rowInput))
 
     createRow(createColumn);
 })
@@ -22,22 +23,32 @@ function createRow(callback) {
     }
 }
 
-
-
 function createColumn(row) {
     for (let i = 0; i < columnInput; i++) {
         const column = document.createElement("div");
         column.classList.add("column");
         row.appendChild(column);
-        
-        column.addEventListener("mouseenter", () => {
-            column.style.backgroundColor = "royalblue"
+
+        column.addEventListener("mouseenter", (e) => {
+            const red = Math.floor(Math.random() * 256);
+            const green = Math.floor(Math.random() * 256);
+            const blue = Math.floor(Math.random() * 256);
+            column.style.backgroundColor = `rgb(${red}, ${green}, ${blue})`;
+
+            console.log(e)
         })
     }
 }
 
+createRow(createColumn);
 
-// if (editButtonClicked !== true) {
-    createRow(createColumn);
-// }
+function clearGrid() {
+    while (gridContainer.firstChild) {
+        gridContainer.removeChild(gridContainer.firstChild);
+    }
+}
+
+
+
+
 
